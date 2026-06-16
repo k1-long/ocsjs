@@ -21,14 +21,16 @@ function cleanOutput() {
 }
 
 async function buildPackages() {
+	const viteOutDir = path.resolve(__dirname, distPath);
+	const env = { ...process.env, VITE_BUILD_PATH: viteOutDir };
 	// @ts-ignore
 	await execOut('tsc', { cwd: '../packages/core' });
 	// @ts-ignore
-	await execOut('vite build', { cwd: '../packages/core' });
+	await execOut('npx vite build', { cwd: '../packages/core', env });
 	// @ts-ignore
 	await execOut('tsc', { cwd: '../packages/scripts' });
 	// @ts-ignore
-	await execOut('vite build', { cwd: '../packages/scripts' });
+	await execOut('npx vite build', { cwd: '../packages/scripts', env });
 }
 
 async function createUserJs() {
