@@ -105,8 +105,7 @@ async function createUserJs() {
 				],
 				require: [path.join(__dirname, distPath, 'index.js')],
 				resource: [`STYLE ${path.join(__dirname, '../packages/scripts/assets/css/style.css')}`],
-				'run-at': 'document-start',
-				antifeature: 'payment'
+				'run-at': 'document-start'
 			},
 			entry: path.join(__dirname, '../packages/scripts/entry.js'),
 			dist: path.join(__dirname, distPath, 'ocs.user.js')
